@@ -1,13 +1,15 @@
 import PageContainer from '@/components/layout/PageContainer';
 import CitationCard from '@/components/ui/CitationCard';
 import DownloadButton from '@/components/ui/DownloadButton';
+import { ExternalLink, Shield } from 'lucide-react';
 import { siteConfig } from '@/data/siteConfig';
 
 export default function AboutPage() {
   return (
     <PageContainer>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-heading mb-2">About TS-Benchmark</h1>
+        <h1 className="text-2xl font-bold text-heading mb-2">About {siteConfig.name}</h1>
+        <p className="text-muted">{siteConfig.description}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -45,6 +47,29 @@ export default function AboutPage() {
           </div>
 
           <div className="bg-card rounded-card shadow-card border border-border p-6">
+            <h2 className="text-lg font-semibold text-heading mb-3 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-primary" />
+              License
+            </h2>
+            <p className="text-body mb-3">
+              This dataset is released under the{' '}
+              <a
+                href={siteConfig.citation.licenseUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-primary hover:underline font-medium"
+              >
+                {siteConfig.citation.license}
+              </a>{' '}
+              ({siteConfig.citation.licenseName}).
+            </p>
+            <p className="text-body text-sm text-muted">
+              You are free to share and adapt the material for any purpose, including commercially,
+              as long as you give appropriate credit.
+            </p>
+          </div>
+
+          <div className="bg-card rounded-card shadow-card border border-border p-6">
             <h2 className="text-lg font-semibold text-heading mb-3">Usage</h2>
             <p className="text-body">
               This dataset is released for research purposes only.
@@ -56,7 +81,7 @@ export default function AboutPage() {
           <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-card-lg p-8 flex items-center justify-center min-h-64">
             <div className="text-center">
               <SportIcon className="w-24 h-24 text-primary/30 mx-auto mb-4" />
-              <p className="text-muted text-sm">Sports Video Analysis</p>
+              <p className="text-muted text-sm">Ball Sports Video Analysis</p>
             </div>
           </div>
 
@@ -64,12 +89,27 @@ export default function AboutPage() {
             title={siteConfig.citation.title}
             authors={siteConfig.citation.authors}
             year={siteConfig.citation.year}
+            publisher={siteConfig.citation.publisher}
+            doi={siteConfig.citation.doi}
+            doiUrl={siteConfig.citation.doiUrl}
+            recordUrl={siteConfig.citation.recordUrl}
+            license={siteConfig.citation.license}
+            licenseUrl={siteConfig.citation.licenseUrl}
+            licenseName={siteConfig.citation.licenseName}
           />
 
           <div className="bg-card rounded-card shadow-card border border-border p-6">
             <h3 className="text-sm font-medium text-muted mb-4">Download</h3>
             <div className="space-y-3">
-              <DownloadButton onClick={() => {}} label="Download Dataset" />
+              <a
+                href={siteConfig.citation.recordUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors justify-center"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Download from Zenodo
+              </a>
               <DownloadButton onClick={() => {}} label="Download Annotations" />
               <DownloadButton onClick={() => {}} label="Download Metadata" />
             </div>
