@@ -4,8 +4,10 @@ import PageContainer from '@/components/layout/PageContainer';
 import VideoPlayerCard from '@/components/video/VideoPlayerCard';
 import SegmentSummaryCard from '@/components/video/SegmentSummaryCard';
 import TemporalTimeline from '@/components/video/TemporalTimeline';
+import SportBadge from '@/components/video/SportBadge';
 import videos from '@/data/videos.json';
 import { DatasetVideo } from '@/types/dataset';
+import { getDisplayName, formatDuration } from '@/utils/videoDisplay';
 
 export default function VideoDetailPage() {
   const { videoId } = useParams<{ videoId: string }>();
@@ -25,12 +27,6 @@ export default function VideoDetailPage() {
     );
   }
 
-  const formatDuration = (sec: number) => {
-    const mins = Math.floor(sec / 60);
-    const secs = sec % 60;
-    return `${mins}:${String(secs).padStart(2, '0')}`;
-  };
-
   return (
     <PageContainer>
       <div className="mb-6">
@@ -44,18 +40,18 @@ export default function VideoDetailPage() {
       </div>
 
       <div className="mb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-2xl font-bold text-heading">{video.id}</h1>
-          <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded">
-            {video.sport}
-          </span>
+        <div className="flex items-center gap-3 mb-2 flex-wrap">
+          <h1 className="text-2xl font-bold text-heading">{getDisplayName(video)}</h1>
+          <SportBadge sport={video.sport} size="md" />
         </div>
-        <p className="text-muted text-sm">Duration: {formatDuration(video.durationSec)}</p>
+        <p className="text-muted text-sm">
+          {video.split} split · Duration {formatDuration(video.durationSec)}
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div className="lg:col-span-2">
-          <VideoPlayerCard videoSrc={video.videoSrc} poster={video.previewImage} />
+          <VideoPlayerCard videoSrc={video.videoSrc} />
         </div>
         <div>
           <SegmentSummaryCard video={video} />

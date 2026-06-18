@@ -1,58 +1,57 @@
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PageContainer from '@/components/layout/PageContainer';
-import DatasetFilters from '@/components/dataset/DatasetFilters';
-import DatasetTable from '@/components/dataset/DatasetTable';
+import DatasetSection from '@/components/dataset/DatasetSection';
+import DatasetSportTabs from '@/components/dataset/DatasetSportTabs';
 import videos from '@/data/videos.json';
-import { DatasetVideo, FilterState } from '@/types/dataset';
+import { DatasetVideo } from '@/types/dataset';
+
+type SportFilter = 'All Sports' | 'Basketball' | 'Billiards' | 'Bowling';
 
 export default function DatasetPage() {
-  const [filters, setFilters] = useState<FilterState>({
-    sport: 'All Sports',
-    segmentType: 'All Types',
-    split: 'All Splits',
-    search: '',
-  });
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 5;
+  const [params, setParams] = useSearchParams();
+  const urlSport = params.get('sport');
+  const activeSport: SportFilter =
+    urlSport === 'Basketball' || urlSport === 'Billiards' || urlSport === 'Bowling'
+      ? urlSport
+      : 'All Sports';
 
-  const filteredVideos = useMemo(() => {
-    return (videos as DatasetVideo[]).filter(video => {
-      if (filters.sport !== 'All Sports' && video.sport !== filters.sport) {
-        return false;
-      }
-      if (filters.split !== 'All Splits' && video.split !== filters.split) {
-        return false;
-      }
-      if (filters.segmentType !== 'All Types') {
-        const hasType = video.segments.some(s => s.label === filters.segmentType);
-        if (!hasType) return false;
-      }
-      if (filters.search) {
-        const searchLower = filters.search.toLowerCase();
-        return (
-          video.id.toLowerCase().includes(searchLower) ||
-          video.sport.toLowerCase().includes(searchLower)
-        );
-      }
-      return true;
-    });
-  }, [filters]);
+  const grouped = useMemo(() => {
+    const all = videos as DatasetVideo[];
+    return {
+      Basketball: all.filter(v => v.sport === 'Basketball'),
+      Billiards: all.filter(v => v.sport === 'Billiards'),
+      Bowling: all.filter(v => v.sport === 'Bowling'),
+    };
+  }, []);
+
+  const handleSportChange = (sport: string) => {
+    if (sport === 'All Sports') {
+      setParams({});
+    } else {
+      setParams({ sport });
+    }
+  };
+
+  const visibleSports: Array<'Basketball' | 'Billiards' | 'Bowling'> =
+    activeSport === 'All Sports'
+      ? ['Basketball', 'Billiards', 'Bowling']
+      : [activeSport];
 
   return (
     <PageContainer>
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-heading mb-2">Dataset</h1>
-        <p className="text-muted">Explore and download the full dataset.</p>
+        <p className="text-muted">
+          Browse {videos.length} annotated ball sports videos. Hover a card to preview.
+        </p>
       </div>
 
-      <DatasetFilters filters={filters} onChange={(f) => { setFilters(f); setCurrentPage(1); }} />
+      <DatasetSportTabs active={activeSport} onChange={handleSportChange} />
 
-      <DatasetTable
-        videos={filteredVideos}
-        currentPage={currentPage}
-        pageSize={pageSize}
-        onPageChange={setCurrentPage}
-      />
+      {visibleSports.map(sport => (
+        <DatasetSection key={sport} sport={sport} videos={grouped[sport]} />
+      ))}
     </PageContainer>
   );
 }
