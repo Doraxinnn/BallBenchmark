@@ -1,12 +1,14 @@
-import { Download } from 'lucide-react';
+import DownloadPopover from './DownloadPopover';
 
 interface VideoPlayerCardProps {
   videoSrc: string;
+  csvHref: string;
   poster?: string;
 }
 
-export default function VideoPlayerCard({ videoSrc, poster }: VideoPlayerCardProps) {
-  const filename = videoSrc.split('/').pop() || 'video.mp4';
+export default function VideoPlayerCard({ videoSrc, csvHref, poster }: VideoPlayerCardProps) {
+  const videoFilename = videoSrc.split('/').pop() || 'video.mp4';
+  const csvFilename = csvHref.split('/').pop() || 'annotations.csv';
 
   return (
     <div className="bg-card rounded-card shadow-card border border-border overflow-hidden">
@@ -20,17 +22,14 @@ export default function VideoPlayerCard({ videoSrc, poster }: VideoPlayerCardPro
           Your browser does not support the video tag.
         </video>
 
-        <a
-          href={videoSrc}
-          download={filename}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Download video"
-          className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1.5 bg-black/60 hover:bg-black/80 text-white text-xs font-medium rounded-md opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm focus-visible:opacity-100"
-        >
-          <Download className="w-3.5 h-3.5" />
-          Download
-        </a>
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
+          <DownloadPopover
+            videoSrc={videoSrc}
+            videoFilename={videoFilename}
+            csvHref={csvHref}
+            csvFilename={csvFilename}
+          />
+        </div>
       </div>
     </div>
   );

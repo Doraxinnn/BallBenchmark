@@ -5,7 +5,7 @@ export const siteConfig = {
   version: '1.0.0',
   stats: {
     totalVideos: '13',
-    totalSegments: '0',
+    totalSegments: '2380',
     segmentTypes: 3,
   },
   citation: {

@@ -7,7 +7,7 @@ import TemporalTimeline from '@/components/video/TemporalTimeline';
 import SportBadge from '@/components/video/SportBadge';
 import videos from '@/data/videos.json';
 import { DatasetVideo } from '@/types/dataset';
-import { getDisplayName, formatDuration } from '@/utils/videoDisplay';
+import { getDisplayName, formatDuration, getCsvPath } from '@/utils/videoDisplay';
 
 export default function VideoDetailPage() {
   const { videoId } = useParams<{ videoId: string }>();
@@ -54,7 +54,7 @@ export default function VideoDetailPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div className="lg:col-span-2">
-          <VideoPlayerCard videoSrc={video.videoSrc} />
+          <VideoPlayerCard videoSrc={video.videoSrc} csvHref={getCsvPath(video)} />
         </div>
         <div>
           <SegmentSummaryCard video={video} />
