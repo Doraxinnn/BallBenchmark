@@ -56,14 +56,14 @@ export default function VideoCard({ video }: VideoCardProps) {
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
           <SportBadge sport={video.sport} />
-          <span className="text-xs text-muted">{formatDuration(video.durationSec)}</span>
+          {formatDuration(video.durationSec) && (
+            <span className="text-xs text-muted">{formatDuration(video.durationSec)}</span>
+          )}
         </div>
         <h3 className="text-heading font-semibold mb-1">{displayName}</h3>
-        <p className="text-sm text-muted">
-          {video.segments.length > 0
-            ? `${video.segments.length} segments`
-            : 'No annotations yet'}
-        </p>
+        {video.segments.length > 0 && (
+          <p className="text-sm text-muted">{video.segments.length} segments</p>
+        )}
       </div>
     </Link>
   );

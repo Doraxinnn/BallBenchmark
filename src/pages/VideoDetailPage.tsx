@@ -45,7 +45,10 @@ export default function VideoDetailPage() {
           <SportBadge sport={video.sport} size="md" />
         </div>
         <p className="text-muted text-sm">
-          {video.split} split · Duration {formatDuration(video.durationSec)}
+          {video.split} split
+          {formatDuration(video.durationSec) && (
+            <> · Duration {formatDuration(video.durationSec)}</>
+          )}
         </p>
       </div>
 
