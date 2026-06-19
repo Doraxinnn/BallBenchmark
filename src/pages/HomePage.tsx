@@ -14,7 +14,7 @@ export default function HomePage() {
         <StatCard
           label="Segment Types"
           value={siteConfig.stats.segmentTypes}
-          sublabel="Hit / Miss / Irrelevant"
+          sublabel="Hit / Miss"
         />
       </section>
     </PageContainer>

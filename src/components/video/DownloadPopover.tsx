@@ -32,7 +32,7 @@ export default function DownloadPopover({
     };
   }, [open]);
 
-  function triggerDownload(href: string, filename: string) {
+  function triggerRemoteDownload(href: string, filename: string) {
     const a = document.createElement('a');
     a.href = href;
     a.download = filename;
@@ -43,7 +43,34 @@ export default function DownloadPopover({
     document.body.removeChild(a);
   }
 
-  function handleDownload() {
+  async function triggerLocalDownload(href: string, filename: string) {
+    try {
+      const response = await fetch(href);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+    } catch (err) {
+      console.error('Local download failed, falling back to new tab:', err);
+      window.open(href, '_blank', 'noreferrer');
+    }
+  }
+
+  function triggerDownload(href: string, filename: string) {
+    if (/^https?:/i.test(href)) {
+      triggerRemoteDownload(href, filename);
+    } else {
+      triggerLocalDownload(href, filename);
+    }
+  }
+
+  async function handleDownload() {
     if (includeVideo) triggerDownload(videoSrc, videoFilename);
     if (includeCsv) {
       const delay = includeVideo ? 250 : 0;

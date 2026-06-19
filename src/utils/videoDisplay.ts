@@ -15,7 +15,7 @@ export function getSportNumber(video: DatasetVideo): number {
 export function getCsvPath(video: DatasetVideo): string {
   const m = video.videoSrc.match(/\/([a-z]+)_(\d+)\.mp4/);
   if (!m) return '';
-  return `/csv/${m[1]}/${m[1]}${m[2]}.csv`;
+  return `${import.meta.env.BASE_URL}csv/${m[1]}/${m[1]}${m[2]}.csv`;
 }
 
 export function formatDuration(sec: number): string | null {

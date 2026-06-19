@@ -31,10 +31,6 @@ export default function AboutPage() {
                 <span className="w-3 h-3 rounded-full bg-miss" />
                 <span className="text-body"><strong>Miss:</strong> failed actions.</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-irrelevant" />
-                <span className="text-body"><strong>Irrelevant:</strong> unrelated content.</span>
-              </div>
             </div>
           </div>
 

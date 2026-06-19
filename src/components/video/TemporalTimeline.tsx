@@ -8,7 +8,6 @@ interface TemporalTimelineProps {
 const labelColors = {
   Hit: 'bg-hit',
   Miss: 'bg-miss',
-  Irrelevant: 'bg-irrelevant',
 };
 
 export default function TemporalTimeline({ video }: TemporalTimelineProps) {
@@ -38,7 +37,7 @@ export default function TemporalTimeline({ video }: TemporalTimelineProps) {
       </div>
 
       <div className="space-y-2">
-        {(['Hit', 'Miss', 'Irrelevant'] as const).map(label => (
+        {(['Hit', 'Miss'] as const).map(label => (
           <TimelineRow
             key={label}
             label={label}

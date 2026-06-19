@@ -7,14 +7,12 @@ interface SegmentSummaryCardProps {
 const labelColors: Record<SegmentLabel, { bg: string; text: string; label: string }> = {
   Hit: { bg: 'bg-hit/10', text: 'text-hit', label: 'Hit' },
   Miss: { bg: 'bg-miss/10', text: 'text-miss', label: 'Miss' },
-  Irrelevant: { bg: 'bg-irrelevant/10', text: 'text-irrelevant', label: 'Irrelevant' },
 };
 
 export default function SegmentSummaryCard({ video }: SegmentSummaryCardProps) {
   const counts: Record<SegmentLabel, number> = {
     Hit: 0,
     Miss: 0,
-    Irrelevant: 0,
   };
 
   video.segments.forEach(s => {

@@ -6,7 +6,7 @@ export const siteConfig = {
   stats: {
     totalVideos: '13',
     totalSegments: '2380',
-    segmentTypes: 3,
+    segmentTypes: 2,
   },
   citation: {
     title: 'BallResearchBench: An Auto Research Harness for Fine-Grained Outcome Recognition in Ball Sports Videos',

@@ -1,4 +1,4 @@
-export type SegmentLabel = 'Hit' | 'Miss' | 'Irrelevant';
+export type SegmentLabel = 'Hit' | 'Miss';
 
 export interface Segment {
   id: string;
