@@ -1,6 +1,5 @@
 import PageContainer from '@/components/layout/PageContainer';
 import CitationCard from '@/components/ui/CitationCard';
-import DownloadButton from '@/components/ui/DownloadButton';
 import { ExternalLink, Shield } from 'lucide-react';
 import { siteConfig } from '@/data/siteConfig';
 
@@ -110,8 +109,6 @@ export default function AboutPage() {
                 <ExternalLink className="w-4 h-4" />
                 Download from Zenodo
               </a>
-              <DownloadButton onClick={() => {}} label="Download Annotations" />
-              <DownloadButton onClick={() => {}} label="Download Metadata" />
             </div>
           </div>
         </div>

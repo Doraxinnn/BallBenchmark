@@ -1,6 +1,4 @@
 import { DatasetVideo, SegmentLabel } from '@/types/dataset';
-import DownloadButton from '@/components/ui/DownloadButton';
-import { downloadAnnotations } from '@/utils/download';
 
 interface SegmentSummaryCardProps {
   video: DatasetVideo;
@@ -27,7 +25,7 @@ export default function SegmentSummaryCard({ video }: SegmentSummaryCardProps) {
     <div className="bg-card rounded-card shadow-card border border-border p-6">
       <h3 className="text-sm font-medium text-muted mb-4">Segments Summary</h3>
 
-      <div className="space-y-3 mb-6">
+      <div className="space-y-3">
         {(Object.keys(labelColors) as SegmentLabel[]).map(label => (
           <div key={label} className="flex items-center justify-between">
             <span className={`text-sm ${labelColors[label].text} font-medium`}>
@@ -37,8 +35,6 @@ export default function SegmentSummaryCard({ video }: SegmentSummaryCardProps) {
           </div>
         ))}
       </div>
-
-      <DownloadButton onClick={() => downloadAnnotations(video)} label="Download Annotations (.json)" />
     </div>
   );
 }
