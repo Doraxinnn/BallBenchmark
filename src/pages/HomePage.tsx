@@ -1,6 +1,7 @@
 import PageContainer from '@/components/layout/PageContainer';
 import StatCard from '@/components/ui/StatCard';
 import HomeHero from '@/components/home/HomeHero';
+import BenchmarkResults from '@/components/results/BenchmarkResults';
 import { siteConfig } from '@/data/siteConfig';
 
 export default function HomePage() {
@@ -17,6 +18,10 @@ export default function HomePage() {
           sublabel="Hit / Miss"
         />
       </section>
+
+      <div className="mt-10">
+        <BenchmarkResults />
+      </div>
     </PageContainer>
   );
 }

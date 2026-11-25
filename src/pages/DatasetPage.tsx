@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import PageContainer from '@/components/layout/PageContainer';
 import DatasetSection from '@/components/dataset/DatasetSection';
 import DatasetSportTabs from '@/components/dataset/DatasetSportTabs';
+import BenchmarkResults from '@/components/results/BenchmarkResults';
 import videos from '@/data/videos.json';
 import { DatasetVideo } from '@/types/dataset';
 
@@ -49,9 +50,13 @@ export default function DatasetPage() {
 
       <DatasetSportTabs active={activeSport} onChange={handleSportChange} />
 
-      {visibleSports.map(sport => (
-        <DatasetSection key={sport} sport={sport} videos={grouped[sport]} />
-      ))}
+      {activeSport !== 'All Sports' && <BenchmarkResults key={activeSport} sport={activeSport} />}
+
+      <div id="sport-videos" tabIndex={-1} className="scroll-mt-28">
+        {visibleSports.map(sport => (
+          <DatasetSection key={sport} sport={sport} videos={grouped[sport]} />
+        ))}
+      </div>
     </PageContainer>
   );
 }

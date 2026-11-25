@@ -1,0 +1,320 @@
+{
+  "systems": [
+    {
+      "id": "claude",
+      "name": "Claude Code + DeepSeek"
+    },
+    {
+      "id": "codex",
+      "name": "Codex + GPT"
+    },
+    {
+      "id": "minimax",
+      "name": "Claude Code + MiniMax"
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode + MiniMax"
+    }
+  ],
+  "harnesses": [
+    {
+      "id": "basic",
+      "name": "Basic Structured"
+    },
+    {
+      "id": "rule",
+      "name": "Rule-Guided"
+    },
+    {
+      "id": "research",
+      "name": "Research-Augmented"
+    }
+  ],
+  "scores": {
+    "Overall": [
+      {
+        "system": "claude",
+        "values": [
+          3.38,
+          8.19,
+          4.43
+        ]
+      },
+      {
+        "system": "codex",
+        "values": [
+          21.67,
+          25.22,
+          34.56
+        ]
+      },
+      {
+        "system": "minimax",
+        "values": [
+          0.74,
+          1.21,
+          2.04
+        ]
+      },
+      {
+        "system": "opencode",
+        "values": [
+          1.28,
+          1.22,
+          1.56
+        ]
+      }
+    ],
+    "Basketball": [
+      {
+        "system": "claude",
+        "values": [
+          4.55,
+          16.24,
+          9.48
+        ]
+      },
+      {
+        "system": "codex",
+        "values": [
+          21.02,
+          40.22,
+          58.2
+        ]
+      },
+      {
+        "system": "minimax",
+        "values": [
+          1.08,
+          1.87,
+          2.56
+        ]
+      },
+      {
+        "system": "opencode",
+        "values": [
+          0.99,
+          0.35,
+          0.72
+        ]
+      }
+    ],
+    "Billiards": [
+      {
+        "system": "claude",
+        "values": [
+          0.14,
+          1.31,
+          0.35
+        ]
+      },
+      {
+        "system": "codex",
+        "values": [
+          1.32,
+          4.65,
+          7.64
+        ]
+      },
+      {
+        "system": "minimax",
+        "values": [
+          0,
+          0.43,
+          0.31
+        ]
+      },
+      {
+        "system": "opencode",
+        "values": [
+          0.87,
+          1.2,
+          0.48
+        ]
+      }
+    ],
+    "Bowling": [
+      {
+        "system": "claude",
+        "values": [
+          5.45,
+          7.01,
+          3.47
+        ]
+      },
+      {
+        "system": "codex",
+        "values": [
+          42.67,
+          30.78,
+          37.84
+        ]
+      },
+      {
+        "system": "minimax",
+        "values": [
+          1.14,
+          1.33,
+          3.26
+        ]
+      },
+      {
+        "system": "opencode",
+        "values": [
+          1.97,
+          2.1,
+          3.49
+        ]
+      }
+    ]
+  },
+  "diagnostics": {
+    "Basketball": [
+      {
+        "hitF1": 24.87,
+        "missF1": 17.18,
+        "temporalRecall": 41.21,
+        "nonEvent": 59.07
+      },
+      {
+        "hitF1": 34.78,
+        "missF1": 45.66,
+        "temporalRecall": 65.17,
+        "nonEvent": 72.89
+      },
+      {
+        "hitF1": 53.84,
+        "missF1": 62.57,
+        "temporalRecall": 77.44,
+        "nonEvent": 73.57
+      }
+    ],
+    "Billiards": [
+      {
+        "hitF1": 1.25,
+        "missF1": 1.39,
+        "temporalRecall": 2.35,
+        "nonEvent": 50.26
+      },
+      {
+        "hitF1": 1.25,
+        "missF1": 8.05,
+        "temporalRecall": 10.7,
+        "nonEvent": 68.49
+      },
+      {
+        "hitF1": 6.07,
+        "missF1": 9.21,
+        "temporalRecall": 11.82,
+        "nonEvent": 63.92
+      }
+    ],
+    "Bowling": [
+      {
+        "hitF1": 32.44,
+        "missF1": 52.9,
+        "temporalRecall": 54.37,
+        "nonEvent": 64.92
+      },
+      {
+        "hitF1": 14.64,
+        "missF1": 46.92,
+        "temporalRecall": 42.6,
+        "nonEvent": 78.67
+      },
+      {
+        "hitF1": 20.76,
+        "missF1": 54.93,
+        "temporalRecall": 56.21,
+        "nonEvent": 73.72
+      }
+    ]
+  },
+  "outcomes": {
+    "Basketball": {
+      "hit": [
+        [
+          678,
+          108,
+          157,
+          1058
+        ],
+        [
+          739,
+          472,
+          233,
+          557
+        ],
+        [
+          1242,
+          224,
+          77,
+          458
+        ]
+      ],
+      "miss": [
+        [
+          497,
+          913,
+          511,
+          1355
+        ],
+        [
+          1537,
+          720,
+          379,
+          640
+        ],
+        [
+          1810,
+          709,
+          203,
+          554
+        ]
+      ]
+    },
+    "Bowling": {
+      "hit": [
+        [
+          19,
+          7,
+          6,
+          16
+        ],
+        [
+          6,
+          13,
+          19,
+          10
+        ],
+        [
+          12,
+          15,
+          14,
+          7
+        ]
+      ],
+      "miss": [
+        [
+          400,
+          24,
+          105,
+          257
+        ],
+        [
+          325,
+          8,
+          300,
+          153
+        ],
+        [
+          409,
+          32,
+          163,
+          182
+        ]
+      ]
+    }
+  }
+}
