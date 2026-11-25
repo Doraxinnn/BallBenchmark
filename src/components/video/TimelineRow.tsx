@@ -27,7 +27,7 @@ export default function TimelineRow({ label, segments, durationSec, color }: Tim
   return (
     <div className="relative">
       <div className="flex items-center h-8">
-        <div className="w-20 text-xs text-muted font-medium">{label}</div>
+        <div className="w-12 shrink-0 text-xs font-medium text-muted sm:w-20">{label}</div>
         <div className="flex-1 relative h-6 bg-gray-100 rounded">
           {filteredSegments.map(segment => (
             <div

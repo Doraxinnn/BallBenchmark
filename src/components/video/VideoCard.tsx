@@ -1,69 +1,28 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Play } from 'lucide-react';
 import { DatasetVideo } from '@/types/dataset';
 import SportBadge from './SportBadge';
-import { getDisplayName, formatDuration } from '@/utils/videoDisplay';
+import { formatDuration, getDisplayName } from '@/utils/videoDisplay';
 
 interface VideoCardProps {
   video: DatasetVideo;
 }
 
 export default function VideoCard({ video }: VideoCardProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const displayName = getDisplayName(video);
-
-  const handleEnter = () => {
-    const v = videoRef.current;
-    if (v) {
-      v.play().catch(() => {});
-    }
-  };
-
-  const handleLeave = () => {
-    const v = videoRef.current;
-    if (v) {
-      v.pause();
-      v.currentTime = 0;
-    }
-  };
+  const duration = formatDuration(video.durationSec);
 
   return (
     <Link
       to={`/dataset/${video.id}`}
-      className="group block bg-card rounded-card-lg shadow-card border border-border overflow-hidden hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+      className="group block rounded-card border border-border bg-card p-5 shadow-card transition-colors hover:border-primary/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <div className="relative aspect-video bg-gray-900 overflow-hidden">
-        <video
-          ref={videoRef}
-          src={video.videoSrc}
-          muted
-          playsInline
-          loop
-          preload="none"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-0 transition-opacity pointer-events-none">
-          <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-            <Play className="w-6 h-6 text-white fill-white" />
-          </div>
-        </div>
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <SportBadge sport={video.sport} />
+        {duration && <span className="text-sm tabular-nums text-muted">{duration}</span>}
       </div>
-
-      <div className="p-4">
-        <div className="flex items-center justify-between mb-2">
-          <SportBadge sport={video.sport} />
-          {formatDuration(video.durationSec) && (
-            <span className="text-xs text-muted">{formatDuration(video.durationSec)}</span>
-          )}
-        </div>
-        <h3 className="text-heading font-semibold mb-1">{displayName}</h3>
-        {video.segments.length > 0 && (
-          <p className="text-sm text-muted">{video.segments.length} segments</p>
-        )}
+      <h3 className="mb-2 font-semibold text-heading">{getDisplayName(video)}</h3>
+      <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+        <span className="text-muted">{video.segments.length} annotated segments</span>
+        <span className="font-medium text-primary group-hover:underline">View annotations</span>
       </div>
     </Link>
   );

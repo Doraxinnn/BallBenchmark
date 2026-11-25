@@ -29,7 +29,7 @@ export default function HomeHero() {
           <Activity className="w-3.5 h-3.5" />
           Ball Sports Video Benchmark
         </div>
-        <h1 className="text-4xl lg:text-5xl font-bold text-heading mb-4">
+        <h1 className="mb-4 text-[clamp(1.65rem,7vw,2.25rem)] font-bold text-heading [overflow-wrap:anywhere] sm:text-4xl lg:text-5xl">
           {siteConfig.fullName}
         </h1>
         <p className="text-lg text-body mb-6 max-w-2xl">{siteConfig.description}</p>

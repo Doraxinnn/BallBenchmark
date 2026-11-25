@@ -1,6 +1,7 @@
 import PageContainer from '@/components/layout/PageContainer';
+import VideoCollectionDownload from '@/components/dataset/VideoCollectionDownload';
 import CitationCard from '@/components/ui/CitationCard';
-import { ExternalLink, Shield } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import { siteConfig } from '@/data/siteConfig';
 
 export default function AboutPage() {
@@ -86,27 +87,12 @@ export default function AboutPage() {
             year={siteConfig.citation.year}
             publisher={siteConfig.citation.publisher}
             doi={siteConfig.citation.doi}
-            doiUrl={siteConfig.citation.doiUrl}
-            recordUrl={siteConfig.citation.recordUrl}
             license={siteConfig.citation.license}
             licenseUrl={siteConfig.citation.licenseUrl}
             licenseName={siteConfig.citation.licenseName}
           />
 
-          <div className="bg-card rounded-card shadow-card border border-border p-6">
-            <h3 className="text-sm font-medium text-muted mb-4">Download</h3>
-            <div className="space-y-3">
-              <a
-                href={siteConfig.citation.recordUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 w-full px-4 py-2.5 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary/90 transition-colors justify-center"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Download from Zenodo
-              </a>
-            </div>
-          </div>
+          <VideoCollectionDownload />
         </div>
       </div>
     </PageContainer>

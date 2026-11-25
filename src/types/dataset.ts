@@ -10,10 +10,9 @@ export interface Segment {
 export interface DatasetVideo {
   id: string;
   sport: string;
+  sportIndex: number;
   split: 'Train' | 'Validation' | 'Test';
   durationSec: number;
-  previewImage: string;
-  videoSrc: string;
   resolution: string;
   fps: number;
   segments: Segment[];

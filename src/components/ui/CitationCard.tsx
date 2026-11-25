@@ -4,8 +4,6 @@ interface CitationCardProps {
   year: number;
   publisher?: string;
   doi?: string;
-  doiUrl?: string;
-  recordUrl?: string;
   license?: string;
   licenseUrl?: string;
   licenseName?: string;
@@ -17,8 +15,6 @@ export default function CitationCard({
   year,
   publisher,
   doi,
-  doiUrl,
-  recordUrl,
   license,
   licenseUrl,
   licenseName,
@@ -32,30 +28,10 @@ export default function CitationCard({
         {publisher ? `${publisher}, ` : ''}{year}
       </p>
 
-      {doi && doiUrl && (
+      {doi && (
         <p className="text-sm mb-2">
           <span className="text-muted">DOI: </span>
-          <a
-            href={doiUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-primary hover:underline break-all"
-          >
-            {doi}
-          </a>
-        </p>
-      )}
-
-      {recordUrl && (
-        <p className="text-sm mb-3">
-          <a
-            href={recordUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="text-primary hover:underline"
-          >
-            View on Zenodo ↗
-          </a>
+          <span className="text-body break-all">{doi}</span>
         </p>
       )}
 

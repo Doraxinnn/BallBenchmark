@@ -1,21 +1,12 @@
 import { DatasetVideo } from '@/types/dataset';
 
 export function getDisplayName(video: DatasetVideo): string {
-  const m = video.videoSrc.match(/\/([a-z]+)_(\d+)\.mp4/);
-  if (!m) return video.sport;
-  const sport = m[1][0].toUpperCase() + m[1].slice(1);
-  return `${sport} ${m[2]}`;
-}
-
-export function getSportNumber(video: DatasetVideo): number {
-  const m = video.videoSrc.match(/_(\d+)\.mp4/);
-  return m ? parseInt(m[1], 10) : 0;
+  return `${video.sport} ${video.sportIndex}`;
 }
 
 export function getCsvPath(video: DatasetVideo): string {
-  const m = video.videoSrc.match(/\/([a-z]+)_(\d+)\.mp4/);
-  if (!m) return '';
-  return `${import.meta.env.BASE_URL}csv/${m[1]}/${m[1]}${m[2]}.csv`;
+  const sport = video.sport.toLowerCase();
+  return `${import.meta.env.BASE_URL}csv/${sport}/${sport}${video.sportIndex}.csv`;
 }
 
 export function formatDuration(sec: number): string | null {

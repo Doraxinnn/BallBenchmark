@@ -1,7 +1,8 @@
+import { useLayoutEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import PageContainer from '@/components/layout/PageContainer';
-import VideoPlayerCard from '@/components/video/VideoPlayerCard';
+import VideoCollectionDownload from '@/components/dataset/VideoCollectionDownload';
 import SegmentSummaryCard from '@/components/video/SegmentSummaryCard';
 import TemporalTimeline from '@/components/video/TemporalTimeline';
 import SportBadge from '@/components/video/SportBadge';
@@ -12,6 +13,10 @@ import { getDisplayName, formatDuration, getCsvPath } from '@/utils/videoDisplay
 export default function VideoDetailPage() {
   const { videoId } = useParams<{ videoId: string }>();
   const video = (videos as DatasetVideo[]).find(v => v.id === videoId);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [videoId]);
 
   if (!video) {
     return (
@@ -52,13 +57,24 @@ export default function VideoDetailPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <div className="lg:col-span-2">
-          <VideoPlayerCard videoSrc={video.videoSrc} csvHref={getCsvPath(video)} />
-        </div>
-        <div>
-          <SegmentSummaryCard video={video} />
-        </div>
+      <div className="mb-6 grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
+        <section className="rounded-card border border-border bg-card p-6 shadow-card lg:col-span-2" aria-labelledby="data-downloads-title">
+          <h2 id="data-downloads-title" className="text-lg font-semibold text-heading">Downloads</h2>
+          <p className="mt-1 text-sm text-body">
+            Get the annotations for this video or open the complete video collection.
+          </p>
+          <div className="mt-4 flex flex-wrap items-start gap-3">
+            <a
+              href={getCsvPath(video)}
+              download
+              className="inline-flex items-center rounded-lg border border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              Download annotation CSV
+            </a>
+            <VideoCollectionDownload compact />
+          </div>
+        </section>
+        <SegmentSummaryCard video={video} />
       </div>
 
       <TemporalTimeline video={video} />

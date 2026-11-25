@@ -22,17 +22,11 @@ const videos = JSON.parse(fs.readFileSync(VIDEOS_JSON, 'utf-8'));
 // 3. sport -> dir 映射
 const sportDir = { Basketball: 'basketball', Billiards: 'billiards', Bowling: 'bowling' };
 
-// 从 videoSrc 解析 sport 本地编号（如 basketball_1.mp4 -> 1）
-function getSportIndex(video) {
-  const m = video.videoSrc.match(/_(\d+)\.mp4/);
-  return m ? m[1] : null;
-}
-
 // 4. 逐个 video 解析 CSV
 let totalCount = 0;
 for (const video of videos) {
   const dir = sportDir[video.sport];
-  const idx = getSportIndex(video);
+  const idx = video.sportIndex;
   const csvPath = path.join(ZENODO, dir, `${dir}${idx}.csv`);
   if (!fs.existsSync(csvPath)) {
     console.warn(`Missing: ${csvPath}`);
@@ -69,7 +63,7 @@ fs.mkdirSync(path.join(PUBLIC_CSV, 'billiards'), { recursive: true });
 fs.mkdirSync(path.join(PUBLIC_CSV, 'bowling'), { recursive: true });
 for (const video of videos) {
   const dir = sportDir[video.sport];
-  const idx = getSportIndex(video);
+  const idx = video.sportIndex;
   const src = path.join(ZENODO, dir, `${dir}${idx}.csv`);
   const dst = path.join(PUBLIC_CSV, dir, `${dir}${idx}.csv`);
   fs.copyFileSync(src, dst);

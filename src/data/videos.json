@@ -2,10 +2,9 @@
   {
     "id": "VID_0001",
     "sport": "Basketball",
+    "sportIndex": 1,
     "split": "Train",
     "durationSec": 1815,
-    "previewImage": "/images/basketball_1.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_1.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -1244,10 +1243,9 @@
   {
     "id": "VID_0002",
     "sport": "Basketball",
+    "sportIndex": 2,
     "split": "Train",
     "durationSec": 2436,
-    "previewImage": "/images/basketball_2.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_2.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -2732,10 +2730,9 @@
   {
     "id": "VID_0003",
     "sport": "Basketball",
+    "sportIndex": 3,
     "split": "Train",
     "durationSec": 2256,
-    "previewImage": "/images/basketball_3.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_3.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -4232,10 +4229,9 @@
   {
     "id": "VID_0004",
     "sport": "Basketball",
+    "sportIndex": 4,
     "split": "Train",
     "durationSec": 2483,
-    "previewImage": "/images/basketball_4.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_4.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -6086,10 +6082,9 @@
   {
     "id": "VID_0005",
     "sport": "Basketball",
+    "sportIndex": 5,
     "split": "Validation",
     "durationSec": 2594,
-    "previewImage": "/images/basketball_5.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_5.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -7706,10 +7701,9 @@
   {
     "id": "VID_0006",
     "sport": "Basketball",
+    "sportIndex": 6,
     "split": "Validation",
     "durationSec": 2043,
-    "previewImage": "/images/basketball_6.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_6.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -9008,10 +9002,9 @@
   {
     "id": "VID_0007",
     "sport": "Basketball",
+    "sportIndex": 7,
     "split": "Test",
     "durationSec": 2373,
-    "previewImage": "/images/basketball_7.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/basketball_7.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -10640,10 +10633,9 @@
   {
     "id": "VID_0008",
     "sport": "Billiards",
+    "sportIndex": 1,
     "split": "Train",
     "durationSec": 1099,
-    "previewImage": "/images/billiards_1.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/billiards_1.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -11594,10 +11586,9 @@
   {
     "id": "VID_0009",
     "sport": "Billiards",
+    "sportIndex": 2,
     "split": "Train",
     "durationSec": 718,
-    "previewImage": "/images/billiards_2.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/billiards_2.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -11918,10 +11909,9 @@
   {
     "id": "VID_0010",
     "sport": "Billiards",
+    "sportIndex": 3,
     "split": "Validation",
     "durationSec": 496,
-    "previewImage": "/images/billiards_3.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/billiards_3.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -12380,10 +12370,9 @@
   {
     "id": "VID_0011",
     "sport": "Billiards",
+    "sportIndex": 4,
     "split": "Test",
     "durationSec": 797,
-    "previewImage": "/images/billiards_4.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/billiards_4.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -12746,10 +12735,9 @@
   {
     "id": "VID_0012",
     "sport": "Bowling",
+    "sportIndex": 1,
     "split": "Train",
     "durationSec": 2812,
-    "previewImage": "/images/bowling_1.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/bowling_1.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [
@@ -13610,10 +13598,9 @@
   {
     "id": "VID_0013",
     "sport": "Bowling",
+    "sportIndex": 2,
     "split": "Validation",
     "durationSec": 2569,
-    "previewImage": "/images/bowling_2.jpg",
-    "videoSrc": "https://zenodo.org/records/20741324/files/bowling_2.mp4",
     "resolution": "1920x1080",
     "fps": 30,
     "segments": [

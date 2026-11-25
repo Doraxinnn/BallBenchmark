@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import PageContainer from '@/components/layout/PageContainer';
 import DatasetSection from '@/components/dataset/DatasetSection';
 import DatasetSportTabs from '@/components/dataset/DatasetSportTabs';
+import VideoCollectionDownload from '@/components/dataset/VideoCollectionDownload';
 import BenchmarkResults from '@/components/results/BenchmarkResults';
 import videos from '@/data/videos.json';
 import { DatasetVideo } from '@/types/dataset';
@@ -44,8 +45,12 @@ export default function DatasetPage() {
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-heading mb-2">Dataset</h1>
         <p className="text-muted">
-          Browse {videos.length} annotated ball sports videos. Hover a card to preview.
+          Browse the annotations for {videos.length} ball sports videos.
         </p>
+      </div>
+
+      <div className="mb-8">
+        <VideoCollectionDownload />
       </div>
 
       <DatasetSportTabs active={activeSport} onChange={handleSportChange} />

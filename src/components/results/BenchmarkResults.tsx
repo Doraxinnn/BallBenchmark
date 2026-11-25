@@ -91,7 +91,7 @@ export default function BenchmarkResults({ sport }: { sport?: BenchmarkSport }) 
               videos?.scrollIntoView({ block: 'start' });
             }}
           >
-            Browse videos
+            Browse annotations
           </button>
         )}
       </div>

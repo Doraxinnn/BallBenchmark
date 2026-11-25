@@ -1,4 +1,5 @@
 import { DatasetVideo } from '@/types/dataset';
+import { formatDuration } from '@/utils/videoDisplay';
 import TimelineRow from './TimelineRow';
 
 interface TemporalTimelineProps {
@@ -12,28 +13,24 @@ const labelColors = {
 
 export default function TemporalTimeline({ video }: TemporalTimelineProps) {
   const durationSec = video.durationSec;
-  const maxTick = Math.ceil(durationSec / 5) * 5;
-  const ticks = [];
-  for (let t = 0; t <= maxTick; t += 5) {
-    ticks.push(t);
-  }
+  const tickPositions = [0, 0.25, 0.5, 0.75, 1];
 
   return (
     <div className="bg-card rounded-card shadow-card border border-border p-6">
       <h3 className="text-sm font-medium text-muted mb-4">Temporal Segments</h3>
 
-      <div className="mb-2">
-        <div className="flex items-center ml-20">
-          {ticks.map(tick => (
-            <div
-              key={tick}
-              className="flex-1 text-xs text-muted"
-              style={{ maxWidth: `${100 / (ticks.length - 1)}%` }}
-            >
-              {String(Math.floor(tick / 60)).padStart(2, '0')}:{String(tick % 60).padStart(2, '0')}
-            </div>
-          ))}
-        </div>
+      <div className="relative mb-2 ml-12 h-4 sm:ml-20">
+        {tickPositions.map((position, index) => (
+          <span
+            key={position}
+            className={`absolute whitespace-nowrap text-xs tabular-nums text-muted
+              ${index % 2 === 1 ? 'hidden sm:inline' : ''}
+              ${position === 1 ? '-translate-x-full' : position > 0 ? '-translate-x-1/2' : ''}`}
+            style={{ left: `${position * 100}%` }}
+          >
+            {formatDuration(Math.round(durationSec * position)) ?? '0:00'}
+          </span>
+        ))}
       </div>
 
       <div className="space-y-2">

@@ -3,6 +3,10 @@ export const siteConfig = {
   fullName: 'BallResearchBench: Fine-Grained Outcome Recognition in Ball Sports Videos',
   description: 'A benchmark dataset for fine-grained outcome recognition in ball sports videos, covering basketball, billiards, and bowling.',
   version: '1.0.0',
+  videoCollection: {
+    shareUrl: 'https://pan.baidu.com/s/1ZeL95T-nf1x3e76ZQ4dffA?pwd=ball',
+    accessCode: 'ball',
+  },
   stats: {
     totalVideos: '13',
     totalSegments: '2380',
@@ -14,8 +18,6 @@ export const siteConfig = {
     year: 2026,
     publisher: 'Zenodo',
     doi: '10.5281/zenodo.20741324',
-    doiUrl: 'https://doi.org/10.5281/zenodo.20741324',
-    recordUrl: 'https://zenodo.org/records/20741324',
     license: 'CC BY 4.0',
     licenseUrl: 'https://creativecommons.org/licenses/by/4.0/legalcode',
     licenseName: 'Creative Commons Attribution 4.0 International',
